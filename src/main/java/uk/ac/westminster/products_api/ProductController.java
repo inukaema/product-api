@@ -11,7 +11,8 @@ public class ProductController {
 
 
 
-    @Autowired private ProductServices productServices;
+    @Autowired
+    private ProductServices productServices;
     @GetMapping("/products")
    public List<Product> getAllproducts(){
         return productServices.getAllProducts();
@@ -23,7 +24,7 @@ public class ProductController {
     }
 
     @PostMapping ("/product")
-    public Product addProduct(@RequestBody Product Product){
+    public Product addProduct(@RequestBody DigitalProduct Product){
         return productServices.addProduct(Product);
     }
 
@@ -34,6 +35,11 @@ public class ProductController {
     @GetMapping("/products/search")
     public List<Product>search(@RequestParam String name){
         return productServices.findByName(name);
+    }
+
+    @GetMapping("/summeries")
+    public List<String>getSummeries(){
+        return productServices.getAllSummaries();
     }
 }
 
